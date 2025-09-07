@@ -1,92 +1,204 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<title>Cheng Portfolio</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cheng Li · Software Engineer</title>
+  <meta name="description" content="Portfolio of Cheng Li — .NET, microservices, workflow engines, and high‑performance billing systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c0f16;--card:#131a2a;--ink:#e7eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#1e2740;
+      --radius:16px;--radius-lg:22px;--shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6}
+    .container{max-width:1040px;margin:0 auto;padding:0 20px}
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="effects.js"></script> 
-	<script src="jquery.scrollme.js"></script> 
-	<script src="jquery.scrollme.min.js"></script>
+    /* Header */
+    header{position:sticky;top:0;z-index:10;background:rgba(12,15,22,.75);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+    .logo{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--ink);color:#0c0f16;font-weight:800}
+    nav a{color:var(--ink);text-decoration:none;margin-left:16px;font-weight:500;opacity:.9}
+    nav a:hover{opacity:1}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;padding:56px 0}
+    .hero h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    .hero p{margin:0 0 18px;color:var(--muted)}
+    .accent{color:var(--accent)}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;opacity:.95}
+    .btn:hover{opacity:1}
+    .btn.primary{background:var(--accent);color:#0c0f16;border-color:transparent}
+    .stats{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow)}
+    .stats ul{margin:0;padding:0;list-style:none}
+    .stats li{padding:8px 0;border-bottom:1px dashed var(--line)}
+    .stats li:last-child{border-bottom:none}
+
+    /* Sections */
+    section{padding:40px 0;border-top:1px solid var(--line)}
+    h2{font-size:28px;margin:0 0 12px}
+
+    /* Tabs */
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}
+    .tab-btn{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:12px;font-weight:600;cursor:pointer}
+    .tab-btn[aria-selected="true"]{background:var(--accent);color:#0c0f16;border-color:transparent}
+    .tab-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+    .tab-panel.active{display:block}
+
+    /* Cards */
+    .cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0 0 10px;color:var(--muted)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:0 0 12px;padding:0}
+    .tag{font-size:12px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;opacity:.9}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:860px){.hero{grid-template-columns:1fr}}
+    img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top"><span class="logo" aria-hidden="true">CL</span><strong>Cheng Li</strong></a>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-	<div class="intro">
-	<h1>Cheng Li</h1>
+  <main id="top">
+    <section class="hero container" id="about">
+      <div>
+        <h1>Hi, I’m <span class="accent">Cheng Li</span> — Lead Software Engineer</h1>
+        <p>I build reliable, scalable billing platforms in <strong>.NET</strong> with microservices, workflow engines, and high‑volume data migrations. 6+ years across architecture, performance tuning, and team leadership.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+          <a class="btn" href="https://github.com/lichal" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/chengli-0/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="stats" aria-label="Highlights">
+        <ul>
+          <li><strong>Microservices:</strong> Billing, Policy, Payment</li>
+          <li><strong>Throughput:</strong> 90% faster vs legacy</li>
+          <li><strong>Data:</strong> 5M+ transactions migrated</li>
+          <li><strong>Leadership:</strong> 9 developers, 3 BAs</li>
+        </ul>
+      </aside>
+    </section>
 
-	<h2>Advancing in Software Engineering</h2>
-	</div>
-</header>
+    <section id="projects" class="container">
+      <h2>Projects</h2>
 
-<div class="wrapper">
-	<section class="about">
-	<div class="about-content">
-		<div class="header">
-			<h3>Hi, I'm Cheng!</h3>
-		</div>
-		<p>I love design and develop a great software project.</p>
-	</div>
+      <!-- Accessible button tabs (no jQuery) -->
+      <div class="tabs" role="tablist" aria-label="Projects">
+        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-node" id="tabbtn-node">Node Connector</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-space" id="tabbtn-space">Space Rock Nacho</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-1024" id="tabbtn-1024">1024</button>
+      </div>
 
-	<h3>my project</h3>
-	<div class="tab">
-  		<button class="tablinks" onclick="proj(event, 'Space')">Space Rock Nacho</button>
-  		<button class="tablinks" onclick="proj(event, 'Node')" id="defaultOpen">Node Connector</button>
-  		<button class="tablinks" onclick="proj(event, '1024')">1024</button>
-	</div>
+      <div id="tab-node" class="tab-panel active" role="tabpanel" aria-labelledby="tabbtn-node">
+        <h3>Node Connector</h3>
+        <p>Android puzzle game inspired by graph theory. The app generates graph specifications that require players to construct an Eulerian trail. Built to practice algorithmic problem‑solving and UI polish.</p>
+        <img src="node_screen.png" alt="Screenshot of Node Connector Android game" loading="lazy">
+        <p>
+          <a class="btn" href="https://github.com/lichal/NodeKonnector" target="_blank" rel="noopener">View project</a>
+        </p>
+      </div>
 
-	<div id="Space" class="tabcontent">
-  		<h3>Space Rock Nacho</h3>
-  		<p>It is likely you've hear about Space Invader, Space Rock Nacho is a game developed with its root in Space Invader. Our group used Java Paint to developed front end for this game. The purpose of Space Rock Nacho is to practice our skills to write clean and well tested code.</p>
-		<img id="space-img" src="space-demo.png">
-		<a href="https://github.com/lichal/Space-Rock-Nacho-Game" target="_blank" class="button">view project</a>
-		<a href="https://github.com/lichal/portfolio/tree/master/SpaceRockNacho" target="_blank" class="button">download game</a>
-		
-	</div>
-		
-	<div id="Node" class="tabcontent">
-  		<h3>Node Connector</h3>
-  		<p>My friend and I decided to developed an Android puzzle game using Graph Theory. Node Connector uses algorithm to randomly generate specifications of a graph, that requires player to construct an Eulerian trail. Node Connector is intended for developing skills to solve complex problems.</p>
-		<img id="node-img" src="node_screen.png">
-		<a href="https://github.com/lichal/NodeKonnector" target="_blank" class="button">view project</a>
-	</div>
+      <div id="tab-space" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-space">
+        <h3>Space Rock Nacho</h3>
+        <p>Arcade shooter inspired by Space Invaders. Team project using Java AWT for rendering; focused on clean code, unit tests, and incremental features.</p>
+        <img src="space-demo.png" alt="Gameplay screenshot of Space Rock Nacho" loading="lazy">
+        <p>
+          <a class="btn" href="https://github.com/lichal/Space-Rock-Nacho-Game" target="_blank" rel="noopener">View project</a>
+          <a class="btn" href="https://github.com/lichal/portfolio/tree/master/SpaceRockNacho" target="_blank" rel="noopener">Download game</a>
+        </p>
+      </div>
 
-	<div id="1024" class="tabcontent">
-  		<h3>1024</h3>
-  		<p>1024 is a half-cut version of 2048. It is an early application I wrote for my coursework. The fever of 2048 was hot during my high school time, and I thought it would be neccessary to mention it on my site.</p>
-		<img id="space-img" src="1024demo.png">
-		<a href="https://github.com/lichal/1024Game" target="_blank" class="button">view project</a>
-	</div>
+      <div id="tab-1024" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-1024">
+        <h3>1024</h3>
+        <p>A streamlined take on the classic 2048 puzzle, created as an early coursework project. Small scope, solid fundamentals.</p>
+        <img src="1024demo.png" alt="Screenshot of 1024 puzzle game" loading="lazy">
+        <p>
+          <a class="btn" href="https://github.com/lichal/1024Game" target="_blank" rel="noopener">View project</a>
+        </p>
+      </div>
 
-	<script>
-		function proj(evt, pName) {
-    			var i, tabcontent, tablinks;
-    			tabcontent = document.getElementsByClassName("tabcontent");
-    			for (i = 0; i < tabcontent.length; i++) {
-        			tabcontent[i].style.display = "none";
-    			}
-    			tablinks = document.getElementsByClassName("tablinks");
-    			for (i = 0; i < tablinks.length; i++) {
-        			tablinks[i].className = tablinks[i].className.replace(" active", "");
-    			}
-    			document.getElementById(pName).style.display = "block";
-    			evt.currentTarget.className += " active";
-		}
+      <h2 style="margin-top:28px">Other Highlights</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Billing 3.0 Platform</h3>
+          <p>Modernized insurance billing into microservices (.NET, EF Core). Introduced a workflow engine for payments, refunds, and transfers; improved query latency ~80%.</p>
+          <ul class="tags"><li class="tag">.NET</li><li class="tag">EF Core</li><li class="tag">Microservices</li></ul>
+        </article>
+        <article class="card">
+          <h3>UI Data Access Migration</h3>
+          <p>Moved UI off direct DB calls to service APIs. Added caching and lookup strategies to decouple and scale independently.</p>
+          <ul class="tags"><li class="tag">API Design</li><li class="tag">Caching</li><li class="tag">Performance</li></ul>
+        </article>
+      </div>
+    </section>
 
-		// Get the element with id="defaultOpen" and click on it
-		document.getElementById("defaultOpen").click();
-	</script>
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:chengemail001@gmail.com">chengemail001@gmail.com</a></p>
+      <p>Based in Metro Detroit • Open to remote/hybrid roles</p>
+      <p>
+        <a class="btn" href="https://github.com/lichal" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/chengli-0/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+  </main>
 
-	<section class="contact">
-	<div class="contact-content">
-		<h4>Email me at: <a class="email" href="lich@mail.gvsu.edu">lich@mail.gvsu.edu</a></h4>
-	</div>
-	<div class="contact-logos">
-			<a target="blank" href="https://www.linkedin.com/in/chengli-0/"><i class="fa fa-linkedin-square" style="font-size:48px;color:#42474D"></i></a>
-			<a target="blank" href="https://github.com/lichal"><i class="fa fa-github" style="font-size:48px;color:#42474D"></i></a>
-		</div>
-	</section>
+  <footer>
+    <div class="container" style="padding:22px 0">
+      <p>© <span id="year"></span> Cheng Li. Built with semantic HTML & vanilla JS. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessible tabs (keyboard + ARIA) — no jQuery
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const panels = Array.from(document.querySelectorAll('.tab-panel'));
+
+    function activateTab(btn){
+      tabButtons.forEach(b=>{
+        const selected = b === btn;
+        b.setAttribute('aria-selected', selected);
+        b.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(p=>p.classList.toggle('active', p.id === btn.getAttribute('aria-controls')));
+    }
+
+    tabButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>activateTab(btn));
+      btn.addEventListener('keydown', (e)=>{
+        const i = tabButtons.indexOf(btn);
+        if(e.key==='ArrowRight') tabButtons[(i+1)%tabButtons.length].focus();
+        if(e.key==='ArrowLeft') tabButtons[(i-1+tabButtons.length)%tabButtons.length].focus();
+        if(e.key==='Home') tabButtons[0].focus();
+        if(e.key==='End') tabButtons.at(-1).focus();
+      });
+    });
+  </script>
 </body>
-
 </html>
